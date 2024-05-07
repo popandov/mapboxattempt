@@ -1,5 +1,9 @@
 # MapBox linker issue
 
+refer to this link with screenshots:
+
+(https://prickle-debt-3ca.notion.site/MapBox-linker-issue-88e0bf014c0e4082a8c8b9805b10a292)
+
 1. Created sample MAUI project 
 
 2. Encountered a `clang++` error upon adding **`Mapbox.Maui`** as a NuGet package.
