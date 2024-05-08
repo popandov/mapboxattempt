@@ -63,7 +63,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\..\mapbox-maui\src\libs\Mapbox.Maui\Mapbox.Maui.csproj" />
+      <ProjectReference Include="..\mapbox-maui\src\libs\Mapbox.Maui\Mapbox.Maui.csproj" />
     </ItemGroup>
 
 </Project>
