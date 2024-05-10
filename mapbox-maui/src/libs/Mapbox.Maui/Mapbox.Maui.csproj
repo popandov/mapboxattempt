@@ -1,0 +1,107 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net8.0-android;net8.0-ios;</TargetFrameworks>
+		<UseMaui>true</UseMaui>
+		<SingleProject>true</SingleProject>
+		<ImplicitUsings>enable</ImplicitUsings>
+
+<!--		15.4 23.0-->
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">15.4</SupportedOSPlatformVersion>
+<!--		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">14.0</SupportedOSPlatformVersion>-->
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">23.0</SupportedOSPlatformVersion>
+<!--		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>-->
+<!--		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>-->
+<!--		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>-->
+		<RootNamespace>MapboxMaui</RootNamespace>
+	</PropertyGroup>
+	<!-- Android -->
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+	  <WarningLevel>4</WarningLevel>
+	  <LangVersion>latestmajor</LangVersion>
+	  <AndroidSupportedAbis>armeabi-v7a;arm64-v8a</AndroidSupportedAbis>
+	  <AndroidLinkMode>None</AndroidLinkMode>
+	  <MtouchLink>Full</MtouchLink>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+	  <LangVersion>latestmajor</LangVersion>
+	</PropertyGroup>
+	<ItemGroup Condition="$(TargetFramework.StartsWith('net8.0-android')) != true">
+		<Compile Remove="**\**\*.Android.cs" />
+	</ItemGroup>
+
+	<!-- Both iOS and Mac Catalyst -->
+	<ItemGroup Condition="$(TargetFramework.StartsWith('net8.0-ios')) != true AND $(TargetFramework.StartsWith('net8.0-maccatalyst')) != true">
+		<Compile Remove="**\**\*.MaciOS.cs" />
+		<None Include="**\**\*.MaciOS.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
+	</ItemGroup>
+
+	<!-- iOS -->
+	<ItemGroup Condition="$(TargetFramework.StartsWith('net8.0-ios')) != true">
+		<Compile Remove="**\**\*.iOS.cs" />
+	</ItemGroup>
+	<ItemGroup Condition="$(TargetFramework.StartsWith('net8.0-ios')) == true">
+		<Compile Include="**\**\*.iOS.cs" />
+	</ItemGroup>
+
+	<PropertyGroup>
+		<PackageId>Mapbox.Maui</PackageId>
+		<Title>Mapbox SDK for .NET MAUI</Title>
+		<Summary>.NET MAUI control and APIs for Mapbox</Summary>
+		<Description>.NET MAUI control and APIs for Mapbox</Description>
+		<Authors>tuyen,tuyen-vuduc</Authors>
+		<Owners>tuyen,tuyen-vuduc</Owners>
+		<Copyright>© tuyen-vuduc. All rights reserved.</Copyright>
+		<RepositoryUrl>https://github.com/tuyen-vuduc/mapbox-maui</RepositoryUrl>
+		<PackageProjectUrl>https://mapbox.tuyen-vuduc.tech</PackageProjectUrl>
+		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+		<PackageVersion>10.11.1</PackageVersion>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<PackageIcon>tv-mapbox.png</PackageIcon>
+	  </PropertyGroup>
+	<ItemGroup>
+		<None Include="../../../assets/tv-mapbox.png" Pack="True" PackagePath="tv-mapbox.png" />
+		<None Include="../../../LICENSE" Pack="True" PackagePath="" />
+		<None Include="../../../README.md" Pack="True" PackagePath="README.md" />
+
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+		<PackageReference Include="Xamarin.Build.Download" Version="0.11.4" />
+		<PackageReference Include="GeoJSON.Text" Version="1.0.2" />
+	</ItemGroup>
+
+	<ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">
+		<PackageReference Include="Com.Mapbox.Maps.Android" Version="10.11.1" />
+		<PackageReference Include="Xamarin.Kotlin.StdLib.Jdk8" Version="1.9.0.1" />
+		<PackageReference Include="Square.OkHttp3" Version="4.10.0.1" />
+		<PackageReference Include="Xamarin.Kotlin.StdLib" Version="1.9.0.1" />
+		<PackageReference Include="Xamarin.AndroidX.Annotation" Version="1.6.0.4" />
+	</ItemGroup>
+
+	<ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">
+		<PackageReference Include="MapboxMapsObjC.iOS" Version="10.11.1.1" />
+		<PackageReference Include="MapboxMobileEvents.iOS" Version="1.0.10.1" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Models\Styles\" />
+	  <Folder Include="Models\Styles\Sources\" />
+	  <Folder Include="Models\Expressions\" />
+	  <Folder Include="Models\Styles\Layers\" />
+	  <Folder Include="Models\Annotations\" />
+	  <Folder Include="Platforms\iOS\Annotations\" />
+	  <Folder Include="Platforms\Android\Annotations\" />
+	  <Folder Include="Models\Offline\" />
+	  <Folder Include="Platforms\iOS\Offline\" />
+	  <Folder Include="Platforms\Android\Offline\" />
+	  <Folder Include="Models\Query\" />
+	</ItemGroup>
+	<ProjectExtensions>
+	  <MonoDevelop>
+	    <Properties>
+	      <Policies>
+	        <DotNetNamingPolicy DirectoryNamespaceAssociation="None" ResourceNamePolicy="FileFormatDefault" />
+	      </Policies>
+	    </Properties>
+	  </MonoDevelop>
+	</ProjectExtensions>
+</Project>

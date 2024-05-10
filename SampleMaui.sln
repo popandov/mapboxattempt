@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleMaui", "SampleMaui\SampleMaui.csproj", "{05334D17-DEBF-45C3-B7E5-F643600645F8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mapbox.Maui", "mapbox-maui\src\libs\Mapbox.Maui\Mapbox.Maui.csproj", "{6C71E1A7-5DAB-4F0E-8960-B513A519C3D1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{05334D17-DEBF-45C3-B7E5-F643600645F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05334D17-DEBF-45C3-B7E5-F643600645F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05334D17-DEBF-45C3-B7E5-F643600645F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05334D17-DEBF-45C3-B7E5-F643600645F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10BF5479-BF4C-4999-9C00-E297EEA8C780}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10BF5479-BF4C-4999-9C00-E297EEA8C780}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10BF5479-BF4C-4999-9C00-E297EEA8C780}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10BF5479-BF4C-4999-9C00-E297EEA8C780}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C71E1A7-5DAB-4F0E-8960-B513A519C3D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C71E1A7-5DAB-4F0E-8960-B513A519C3D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C71E1A7-5DAB-4F0E-8960-B513A519C3D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C71E1A7-5DAB-4F0E-8960-B513A519C3D1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
